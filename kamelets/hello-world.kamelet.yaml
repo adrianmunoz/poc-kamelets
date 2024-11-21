@@ -1,0 +1,24 @@
+  apiVersion: camel.apache.org/v1
+  kind: Kamelet
+  metadata:
+    name: hello-world
+    labels:
+      camel.apache.org/kamelet.type: source
+      camel.apache.org/catalog.version: "1.0"
+  spec:
+    definition:
+      title: "My Hello World Kamelet"
+      description: "A Custom Kamelet example"
+      properties:
+        message:
+          type: string
+          title: "Message"
+          description: "Message to be logged"
+          default: "Hello from Kamelet!"
+    template:
+      from:
+        uri: timer:custom-timer?period=1000
+        steps:
+          - set-body:
+              constant: "{{message}}"
+          - to: log:info
