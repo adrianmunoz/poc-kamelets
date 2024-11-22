@@ -14,7 +14,7 @@
           type: string
           title: "Message"
           description: "Message to be logged"
-          default: "Hello from Kamelet!"
+          default: "Hello from Kamelet In GitHub!"
     template:
       from:
         uri: timer:custom-timer?period=1000
